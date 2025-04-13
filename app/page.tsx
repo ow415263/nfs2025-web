@@ -86,6 +86,7 @@ export default function Page() {
 
             sr().reveal('#logo', {
                 distance: "50px",
+                origin: "left",
                 delay: 0,
             });
 
