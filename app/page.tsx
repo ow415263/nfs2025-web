@@ -110,8 +110,7 @@ export default function Page() {
 
         animate();
 
-        // const randomNumber = Math.floor(Math.random() * imageList.length);
-        const randomNumber = 2;
+        const randomNumber = Math.floor(Math.random() * imageList.length);
 
         setImageURL(imageList[randomNumber].url);
         setImageSource(imageList[randomNumber].source);
@@ -247,7 +246,7 @@ export default function Page() {
                                     body: JSON.stringify({
                                         "title": "Contact form submission: " + new Date().toISOString(),
                                         "content": JSON.stringify(form),
-                                        "project_uuid": "58f7f50b-eac1-4c9f-b7fa-d44b8c37c173",
+                                        "project_uuid": "9ca3466f-2365-49b9-942f-6e394da3ee0b",
                                         "metadata": stringify(form),
                                     })
                                 };
