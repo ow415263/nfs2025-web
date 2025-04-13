@@ -74,6 +74,7 @@ export default function Page() {
 
             sr().reveal('#sideimage', {
                 distance: "50px",
+                origin: "top",
                 delay: 250,
             });
 
