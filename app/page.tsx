@@ -75,13 +75,13 @@ export default function Page() {
             sr().reveal('#sideimage', {
                 distance: "50px",
                 origin: "top",
-                delay: 250,
+                delay: 200,
             });
 
             sr().reveal('#largelogo', {
                 distance: "50px",
                 origin: "right",
-                delay: 350,
+                delay: 0,
             });
 
             sr().reveal('#logo', {
@@ -92,19 +92,19 @@ export default function Page() {
 
             sr().reveal('#description', {
                 distance: "50px",
-                delay: 500,
+                delay: 0,
             });
 
 
             sr().reveal('#summary', {
                 distance: "50px",
-                delay: 750,
+                delay: 0,
             });
 
 
             sr().reveal('#form', {
                 distance: "50px",
-                delay: 1000,
+                delay: 0,
             });
 
         }
