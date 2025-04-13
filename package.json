@@ -25,6 +25,7 @@
     "next": "^15.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "scrollreveal": "^4.0.9",
     "yaml": "^2.7.1"
   },
   "devDependencies": {

@@ -1,29 +1,61 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { stringify } from 'yaml';
 
 export default function Page() {
 
 
     const specs = [
-        {
-            name: "Name",
-            type: "text"
-        },
-        {
-            name: "Email",
-            type: "email"
-        },
-        {
-            name: "Phone",
-            type: "phone",
-            optional: true
-        },
-        {
-            name: "Message",
-            type: "textarea"
-        },
+        [
+
+            {
+                name: "Name",
+                label: "Your name",
+                type: "text"
+            },
+            {
+                name: "Email",
+                label: "Your email",
+                type: "email"
+            },
+            {
+                name: "Company",
+                label: "Company name",
+                type: "text",
+                optional: true
+            },
+            {
+                name: "Phone",
+                label: "Your phone number",
+                type: "phone",
+                optional: true
+            },
+        ],
+        [
+
+            {
+                name: "Role",
+                label: "What role are you looking to fill?",
+                type: "text",
+            },
+
+            {
+                name: "type",
+                label: "Type of hire",
+                type: "select",
+                options: [
+                    "Full-time",
+                    "Freelance or contract",
+                    "Co-op or internship",
+                ],
+            },
+            {
+                name: "Message",
+                type: "textarea",
+                optional: true
+            },
+        ]
     ]
 
     const [form, setForm] = useState({
@@ -33,6 +65,76 @@ export default function Page() {
         "message": "",
     })
 
+    useEffect(() => {
+
+        async function animate() {
+
+            const sr = (await import("scrollreveal")).default
+
+
+            sr().reveal('#sideimage', {
+                distance: "50px",
+                delay: 250,
+            });
+
+            sr().reveal('#largelogo', {
+                distance: "50px",
+                origin: "right",
+                delay: 350,
+            });
+
+            sr().reveal('#logo', {
+                distance: "50px",
+                delay: 0,
+            });
+
+
+            sr().reveal('#description', {
+                distance: "50px",
+                delay: 500,
+            });
+
+
+            sr().reveal('#summary', {
+                distance: "50px",
+                delay: 750,
+            });
+
+
+            sr().reveal('#form', {
+                distance: "50px",
+                delay: 1000,
+            });
+
+        }
+
+        animate();
+
+        // const randomNumber = Math.floor(Math.random() * imageList.length);
+        const randomNumber = 2;
+
+        setImageURL(imageList[randomNumber].url);
+        setImageSource(imageList[randomNumber].source);
+
+    }, []);
+
+    const [imageURL, setImageURL] = useState("");
+    const [imageSource, setImageSource] = useState("");
+
+    const imageList = [
+        {
+            url: "https://images.unsplash.com/photo-1716910729414-302a85b5c3ce?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            source: "https://unsplash.com/photos/a-computer-monitor-sitting-on-top-of-a-wooden-desk-aLq9KNZ4rjo",
+        },
+        {
+            url: "https://images.unsplash.com/photo-1497048679117-1a29644559e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            source: "https://unsplash.com/photos/white-ceramic-bowl-on-table-eHdRLiazcww",
+        },
+        {
+            url: "https://images.unsplash.com/photo-1587355760421-b9de3226a046?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            source: "https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-holding-white-paper-pqzRfBhd9r0",
+        }
+    ]
 
     return <>
         <div className='text-center1'>
@@ -43,14 +145,14 @@ export default function Page() {
 
                 <div className='row align-items-center'>
 
-                    <div className='col-lg-6 p-5'>
+                    <div className='col-lg-6 p-xl-5 p-4'>
 
-                        <div className='bg-white' style={{
+                        <div className='bg-white load-hidden' id="logo" style={{
                             top: 0,
                             left: 0,
                             zIndex: 1,
                         }}>
-                            <h1 className='display-1 m-0 fw-bold lh-1 text-nowrap' style={{
+                            <h1 className='display-2 m-0 fw-bold lh-1 text-nowrap' style={{
                                 // fontSize:"1vw",
                             }}>
                                 NextFirstSteps
@@ -73,122 +175,155 @@ export default function Page() {
 
                         </div>
 
-                        <h1 className='display-3 fw-bold m-0 mb-1 lh-1 mt-5'>
-                            Connect with the creative talent of <span className='text-primary'>tomorrow</span>
-                            {/* <sup>
+                        <div className=' mt-lg-5 mt-4 load-hidden' id="description">
+
+                            <h1 className='display-3 fw-bold m-0 lh-1'>
+                                Connect with the creative talent of <span className='text-primary'>tomorrow</span>
+                                {/* <sup>
                                 <img src="/logo.svg" alt="Logo" className='ms-1' style={{
                                     width: '0.5em',
                                     height: 'auto',
                                 }} />
                             </sup> */}
-                        </h1>
-
-
-                        <h4 className='lh-sm mt-3 fw-light'>
-                            NextFirstSteps builds bridges between rising creatives and the companies shaping the future of digital design and development.
-                            Partner with the next wave of talent shaping <span className='text-primary d-inline-block1'>user experience, web, and creative technologies</span>.
-                        </h4>
-
-
-                        <div className='mt-5 mb-5'>
-
-                            <ul className='list-unstyled fw-medium m-0 fs-5'>
-                                <li>
-                                    <i className='bi bi-geo-alt'></i> Toronto, Ontario
-                                </li>
-                                <li>
-                                    <i className='bi bi-gear'></i> Talent discovery and recruitment, skills training, and staffing and direct project support
-                                </li>
-                                <li>
-                                    <i className='bi bi-envelope'></i> hello@nextfirststeps.com
-                                </li>
-                                <li>
-                                    <i className='bi bi-question-circle'></i> Need fast, reliable support for your project?
-                                    Try <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a>.
-                                </li>
-                            </ul>
+                            </h1>
+                            <h4 className='lh-sm mt-3 fw-light m-0'>
+                                NextFirstSteps connects emerging creative talent with the companies driving the future of digital design and development.
+                            </h4>
+                            <h4 className='lh-sm mt-2 fw-light m-0'>
+                                Partner with the next generation of innovators in <span className='text-primary d-inline-block1 fw-medium'>user experience, web, and creative tech</span> — while elevating your current teams through <span className='text-primary d-inline-block1 fw-medium'>mentorship, collaborative learning, and real-world innovation</span>.
+                            </h4>
 
                         </div>
 
-                        <h3 className='m-0 fw-bold mb-3'>
-                            Contact Us
-                            <sup>
-                                <img src="/logo.svg" alt="Logo" className='ms-1' style={{
-                                    width: '0.5em',
-                                    height: 'auto',
-                                }} />
-                            </sup>
-                        </h3>
+                        <div className='my-lg-5 my-4 load-hidden' id="summary">
 
-                        <form onSubmit={async (e) => {
-
-                            e.preventDefault();
-
-                            const url = 'https://api.letterform.app/public/pages/create';
-                            const options = {
-                                method: 'POST',
-                                headers: { 'content-type': 'application/json' },
-                                body: JSON.stringify({
-                                    "title": "Contact form submission: " + new Date().toISOString(),
-                                    "content": JSON.stringify(form),
-                                    "project_uuid": "58f7f50b-eac1-4c9f-b7fa-d44b8c37c173",
-                                    "metadata": stringify(form),
-                                })
-                            };
-
-                            try {
-                                const response = await fetch(url, options);
-                                const data = await response.json();
-                                alert("Thank you for your submission!");
-                                window.location.reload();
-                            } catch (error) {
-                                console.error(error);
-                            }
-
-                        }}>
-
-                            {/* <pre>
-    {JSON.stringify(form)}
-</pre> */}
-
-                            <div className='row'>
-
-                                {specs.map((spec, index) => {
-
-                                    return <div className='col-6' key={index}>
-
-                                        <h6 className="m-0 mb-1">
-                                            {spec.name}
-                                            {spec.optional &&
-                                                <small className="opacity-50"> (Optional)</small>
-                                            }
-                                        </h6>
-                                        {spec.type == "textarea" &&
-                                            <textarea name={spec.name.toLowerCase()} required={spec.optional ? false : true} className="form-control bg-border border-1 border-black mb-3 text-dark fw-normal" rows={4} onChange={(e) => setForm({
-                                                ...form,
-                                                [spec.name.toLowerCase()]: e.target.value
-                                            })} ></textarea>
-                                        }
-                                        {spec.type != "textarea" &&
-                                            <input name={spec.name.toLowerCase()} type={spec.type} required={spec.optional ? false : true} className="form-control bg-border border-1 border-black mb-3 text-dark fw-normal" onChange={(e) => setForm({
-                                                ...form,
-                                                [spec.name.toLowerCase()]: e.target.value
-                                            })} />
-                                        }
-
-                                    </div>
-
-                                })}
+                            <div className='list-unstyled fw-medium m-0 fs-5 lh-sm'>
+                                <div className='d-flex align-items-start mb-1'>
+                                    <i className='me-2 bi bi-geo-alt'></i> <span>Toronto, Ontario, Canada</span>
+                                </div>
+                                <div className='d-flex align-items-start mb-1'>
+                                    <i className='me-2 bi bi-gear'></i> <span>Recruitment and upskilling support</span>
+                                </div>
+                                <div className='d-flex align-items-start mb-1'>
+                                    <i className='me-2 bi bi-info-circle'></i> <span>Operated by <a target="_blank" href="https://chriskkim.com" className='text-dark'>Chris Kim</a> of <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a></span>
+                                </div>    
+                                <div className='d-flex align-items-start mb-1'>
+                                    <i className='me-2 bi bi-envelope'></i> <span>hello@nextfirststeps.com</span>
+                                </div>  
+                                <div className='d-flex align-items-start mb-0'>
+                                    {/* <i className='me-2 bi bi-link'></i>  <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a> */}
+                                </div>                            
                             </div>
 
+                        </div>
 
-                            <div className="d-flex mt-3">
-                                <button className="btn btn-primary fw-medium border-white ms-auto">
-                                    Submit Form
-                                </button>
+                        <div className='load-hidden' id="form" >
+
+
+                            <h3 className='m-0 fw-bold mb-2'>
+                                Contact Us
+                                <sup>
+                                    <img src="/logo.svg" alt="Logo" className='ms-1' style={{
+                                        width: '0.5em',
+                                        height: 'auto',
+                                    }} />
+                                </sup>
+                            </h3>
+
+
+                            <div className='mb-2'>
+                                Need fast, reliable support for your digital project?
+                                Try <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a> instead.
                             </div>
 
-                        </form>
+                            <form onSubmit={async (e) => {
+
+                                e.preventDefault();
+
+                                const url = 'https://api.letterform.app/public/pages/create';
+                                const options = {
+                                    method: 'POST',
+                                    headers: { 'content-type': 'application/json' },
+                                    body: JSON.stringify({
+                                        "title": "Contact form submission: " + new Date().toISOString(),
+                                        "content": JSON.stringify(form),
+                                        "project_uuid": "58f7f50b-eac1-4c9f-b7fa-d44b8c37c173",
+                                        "metadata": stringify(form),
+                                    })
+                                };
+
+                                try {
+                                    const response = await fetch(url, options);
+                                    const data = await response.json();
+                                    alert("Thank you for your submission. We will review your submission and get back to you as soon as possible.");
+                                    window.location.reload();
+                                } catch (error) {
+                                    console.error(error);
+                                }
+
+                            }}>
+
+                                <div className='row'>
+
+                                    {specs.map((list, index) => {
+
+                                        return <div className='col-xl-6' key={index} style={{
+                                        }}>
+
+                                            {list.map((spec, index) => {
+
+
+                                                return <div key={"spec_" + index} className=''>
+                                                    <h6 className="m-0 mb-1">
+                                                        {spec.label ? spec.label : spec.name}
+                                                        {spec.optional &&
+                                                            <small className="opacity-50"> (Optional)</small>
+                                                        }
+                                                    </h6>
+                                                    {spec.type == "textarea" &&
+                                                        <textarea name={spec.name.toLowerCase()} required={spec.optional ? false : true} className="form-control bg-border border-1 border-black mb-3 text-dark fw-normal" rows={5} onChange={(e) => setForm({
+                                                            ...form,
+                                                            [spec.name.toLowerCase()]: e.target.value
+                                                        })} ></textarea>
+                                                    }
+                                                    {spec.type == "select" &&
+                                                        <>
+                                                            <select name={spec.name.toLowerCase()} required={spec.optional ? false : true} className="form-control bg-border border-1 border-black mb-3 text-dark fw-normal" onChange={(e) => setForm({
+                                                                ...form,
+                                                                [spec.name.toLowerCase()]: e.target.value
+                                                            })}>
+                                                                <option value="">(Select one)</option>
+                                                                {spec.options.map((option, index) => {
+                                                                    return <option key={index} value={option}>{option}</option>
+                                                                })}
+                                                            </select>
+                                                        </>
+                                                    }
+                                                    {spec.type != "textarea" && spec.type != "select" &&
+                                                        <input name={spec.name.toLowerCase()} type={spec.type} required={spec.optional ? false : true} className="form-control bg-border border-1 border-black mb-3 text-dark fw-normal" onChange={(e) => setForm({
+                                                            ...form,
+                                                            [spec.name.toLowerCase()]: e.target.value
+                                                        })} />
+                                                    }
+                                                </div>
+
+                                            })}
+
+                                        </div>
+
+                                    })}
+                                </div>
+
+
+                                <div className="d-flex mt-3">
+                                    <button className="btn btn-primary fw-bold text-uppercase border-white ms-auto">
+                                        Submit Form
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
 
                     </div>
 
@@ -202,23 +337,38 @@ export default function Page() {
             </div>
 
 
-            <div className='w-50 position-fixed h-100 d-lg-block d-none overflow-hidden' style={{
+            <div className='w-50 position-fixed h-100 d-lg-block d-none overflow-hidden load-hidden' id="sideimage" style={{
                 right: 0,
                 top: 0
             }}>
                 <div className='position-relative w-100 h-100 bg-dark d-flex flex-column justify-content-center align-items-center' style={{
-                    backgroundImage: "url(https://images.unsplash.com/photo-1716910729414-302a85b5c3ce?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+                    backgroundImage: "url(" + imageURL + ")",
                     backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}>
-                    <img src="/logo.svg" alt="Logo" className='position-absolute' style={{
-                        width: '60vw',
-                        height: 'auto',
+{/* 
+                    <div className='position-relative w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-primary' style={{
+                        // mixBlendMode: "",
+                    }}></div> */}
+
+                    <img src="/logo.svg" id="largelogo" alt="Logo" className='position-absolute load-hidden' style={{
+                        height: '50vh',
+                        width: 'auto',
                         mixBlendMode: "darken",
-                        zIndex:10,
-                        top:0,
-                        right:0
+                        zIndex: 10,
+                        top: 0,
+                        right: 0
                     }} />
-                        
+
+                    <a href={imageSource} target="_blank">
+
+                        <i className="bi bi-info-circle position-absolute text-white m-3 " style={{
+                            top: 0,
+                            right: 0,
+                            zIndex: 100
+                        }}></i>
+                    </a>
+
 
                 </div>
             </div>

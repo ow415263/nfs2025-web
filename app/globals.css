@@ -24,3 +24,11 @@
     background-color:#12d27d !important;
     border-color:#12d27d !important
   }
+  
+  .bg-primary
+  {
+    background-color:#12d27d !important;
+  }
+  html.sr *.load-hidden {
+    visibility: hidden;
+}
