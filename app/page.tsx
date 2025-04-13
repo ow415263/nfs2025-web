@@ -136,6 +136,41 @@ export default function Page() {
     ]
 
     return <>
+
+
+        <div className='w-50 position-fixed h-100 d-block overflow-hidden load-hidden' id="sideimage" style={{
+            right: 0,
+            top: 0,
+        }}>
+            <div className='position-relative w-100 h-100 bg-dark d-flex flex-column justify-content-center align-items-center' style={{
+                backgroundImage: "url(" + imageURL + ")",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
+
+                <img src="/logo.svg" id="largelogo" alt="Logo" className='position-absolute load-hidden' style={{
+                    height: '50vh',
+                    width: 'auto',
+                    mixBlendMode: "darken",
+                    zIndex: 10,
+                    top: 0,
+                    right: 0
+                }} />
+
+                <a href={imageSource} target="_blank">
+
+                    <i className="bi bi-info-circle position-absolute text-white m-3 " style={{
+                        top: 0,
+                        right: 0,
+                        zIndex: 100
+                    }}></i>
+                </a>
+
+
+            </div>
+        </div>
+
+
         <div className='text-center1'>
 
 
@@ -205,13 +240,13 @@ export default function Page() {
                                 </div>
                                 <div className='d-flex align-items-start mb-1'>
                                     <i className='me-2 bi bi-info-circle'></i> <span>Operated by <a target="_blank" href="https://chriskkim.com" className='text-dark'>Chris Kim</a> of <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a></span>
-                                </div>    
+                                </div>
                                 <div className='d-flex align-items-start mb-1'>
                                     <i className='me-2 bi bi-envelope'></i> <span>hello@nextfirststeps.com</span>
-                                </div>  
+                                </div>
                                 <div className='d-flex align-items-start mb-0'>
                                     {/* <i className='me-2 bi bi-link'></i>  <a target="_blank" href="https://goodcodeclub.com" className='text-dark'>GoodCodeClub</a> */}
-                                </div>                            
+                                </div>
                             </div>
 
                         </div>
@@ -335,42 +370,6 @@ export default function Page() {
 
             </div>
 
-
-            <div className='w-50 position-fixed h-100 d-lg-block d-none overflow-hidden load-hidden' id="sideimage" style={{
-                right: 0,
-                top: 0
-            }}>
-                <div className='position-relative w-100 h-100 bg-dark d-flex flex-column justify-content-center align-items-center' style={{
-                    backgroundImage: "url(" + imageURL + ")",
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}>
-{/* 
-                    <div className='position-relative w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-primary' style={{
-                        // mixBlendMode: "",
-                    }}></div> */}
-
-                    <img src="/logo.svg" id="largelogo" alt="Logo" className='position-absolute load-hidden' style={{
-                        height: '50vh',
-                        width: 'auto',
-                        mixBlendMode: "darken",
-                        zIndex: 10,
-                        top: 0,
-                        right: 0
-                    }} />
-
-                    <a href={imageSource} target="_blank">
-
-                        <i className="bi bi-info-circle position-absolute text-white m-3 " style={{
-                            top: 0,
-                            right: 0,
-                            zIndex: 100
-                        }}></i>
-                    </a>
-
-
-                </div>
-            </div>
 
 
         </div>

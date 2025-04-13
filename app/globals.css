@@ -32,3 +32,11 @@
   html.sr *.load-hidden {
     visibility: hidden;
 }
+
+@media screen and (max-width: 991px) {
+    #sideimage {
+        position: relative !important;
+        height: 25vh !important;
+        width: 100% !important;
+    }
+}
