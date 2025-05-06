@@ -2,7 +2,7 @@ export default function Page(){
 
     return <>
         <div className="container my-5">
-            Hello from Chris K 🖐️
+            <h1>Hello, World!</h1>
         </div>
     </>
 
